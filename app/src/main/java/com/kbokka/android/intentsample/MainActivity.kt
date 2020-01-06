@@ -34,11 +34,12 @@ class MainActivity : AppCompatActivity() {
     val adapter = SimpleAdapter(applicationContext, menuList, android.R.layout.simple_list_item_2, from, to)
 
     lvMenu.adapter = adapter
+    lvMenu.onItemClickListener = ListItemClickListener()
   }
 
   private inner class ListItemClickListener : AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-      val item = parent.getItemIdAtPosition(position) as MutableMap<String, String>
+      val item = parent.getItemAtPosition(position) as MutableMap<String, String>
       val menuName = item["name"]
       val menuPrice = item["price"]
 
